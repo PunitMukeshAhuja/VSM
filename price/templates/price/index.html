@@ -1,0 +1,13 @@
+{% extends 'price/base.html' %}
+{% block albums_active %}active{% endblock %}
+{% block body %}
+{% if company %}
+    <ul>
+    {% for i in company %}
+        <li><a href="{% url 'price:detail' i%}">{{ i }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No companies are available.</p>
+{% endif %}
+{% endblock %}

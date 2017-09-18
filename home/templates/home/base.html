@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Vsm{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+	<title>Travel Trial</title>
+    <meta charset="utf-8">
+
+    <!--bootstrap CDN-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/styl.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</head>
+    <body>
+	<!--navigation bar-->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand brand-image" href="#"><span class="logo">Make My Tour</span></a>
+        </div>
+        <!--as above part is not under collapse it will remain as it is even after reducing screen size-->
+
+        <!--link the below section under collapse with id to the above defined button-->
+        <div class="collapse navbar-collapse options" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Our Tours <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">National</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Conducted</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Customised</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+</nav>
+
+
+{% block body %}
+{% endblock %}
+</body>
+</html>

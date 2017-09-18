@@ -1,0 +1,144 @@
+.brand-image{
+background:url(logo.jpg) no-repeat;
+background-size: 80px 50px;
+width:80px;
+position:absolute;
+left:100px;
+}
+
+.options{
+position:absolute;
+left:800px;
+}
+
+
+.logo{
+font-family:Segoe,"Segoe UI","DejaVu Sans","Trebuchet MS",Verdana,sans-serif;
+font-size:24px;
+font-weight:bold;
+font-style:italic;
+text-shadow:2px 2px 3px #ff0000;
+margin-left:90px;
+width:300px;
+position:absolute;
+left:0px;
+}
+/*navbar effects*/
+.options ul li a:active,
+.options ul li a:focus{
+color:#A52A2A
+}
+.options ul li a:hover{
+background:#7FFF00
+}
+
+/* row below image slider*/
+.middle{
+background:#dfdfdf;
+border-top:1px solid #222;
+border-bottom:1px solid #222;
+}
+
+.update{
+background:#222
+}
+
+.update1{
+background:#222
+}
+
+.blogs a{
+color:#ffffff
+}
+
+.blog1 a{
+color:#ffffff
+}
+
+.update p{
+text-align:center;
+font-size:20px;
+}
+
+.update1 p{
+text-align:center;
+font-size:20px;
+}
+
+.query{
+color:#000;
+text-align:center;
+background:#dfdfdf
+}
+
+.query p{
+font-family:Segoe,"Segoe UI","DejaVu Sans","Trebuchet MS",Verdana,sans-serif;
+font-style:italic;
+font-size:16px;
+padding-top:5px;
+}
+
+/*next to blog row*/
+.trend{
+font-family:Segoe,"Segoe UI","DejaVu Sans","Trebuchet MS",Verdana,sans-serif;
+font-style:italic;
+font-size:30px;
+font-weight:bold;
+}
+.small{
+font-size:12px;
+padding-top:15px;
+}
+.space{
+padding-top:50px;
+}
+.title{
+font-weight:bold;
+}
+.al_right{
+text-align:right;
+}
+.lined-images{
+background:#ffffff;
+padding-bottom:20px;
+}
+.head{
+font-color:#7FFF00;
+text-align:center;
+background:#ffffff;
+}
+.caption{
+text-align:center;
+font-size:15px;
+}
+.thumbnaill{
+padding-top:20px;
+}
+.ma{
+padding-left:0px;
+}
+.bala{
+padding-right:0px;
+}
+
+.why{
+	padding:0px;
+    margin:0px;}
+
+.bottom{
+padding-bottom:20px;}
+
+.linfo{
+	font-size:200px;
+	margin:10px;
+	padding:10px;
+}
+
+@media screen and (min-width:361px) and (max-width:760px){
+.head{
+font-color:#7FFF00;
+text-align:center;
+background:#ffffff;
+
+}
+}

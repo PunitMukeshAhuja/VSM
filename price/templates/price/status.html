@@ -1,0 +1,21 @@
+{% extends 'price/base.html' %}
+{% block title %}Status{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<h1>Status:</h1>
+<ul>
+	<li>Name: {{transact.user.username}}</li>
+	<li>Virtual Cash: {{transact.virtual_cash}}</li>
+	<li>Company Name: {{transact.company_symbol}}</li> 
+	<li>Purchase_rate: {{transact.purchase_rate}}</li> 
+	<li>Purchase_quantity: {{transact.purchase_quantity}}</li> 
+	<li>Purchase_amount: {{transact.purchase_amount}}</li>
+	<li>Sale_rate: {{transact.sale_rate}}</li> 
+	<li>Sale_quantity: {{transact.sale_quantity}}</li> 
+	<li>Sale_amount: {{transact.sale_amount}}</li> 
+	<li>Balance shares of company: {{transact.balance_shares}}</li>
+	<li>Profit: {{transact.profit}}</li> 
+	
+</ul>
+{% endblock %}

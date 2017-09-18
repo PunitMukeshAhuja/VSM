@@ -1,0 +1,11 @@
+{% extends 'price/base.html' %}
+{% block title %}{{ album }}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<h1>{{company_symbol}} {{price}}</h1>
+<ul>
+	<li><a href="{% url 'price:buy' company_symbol=company_symbol price=price%}">Buy</a></li>
+	<li><a href="{% url 'price:sell' cs=company_symbol price=price%}">Sell</a></li>
+</ul>
+{% endblock %}

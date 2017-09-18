@@ -1,0 +1,19 @@
+{% extends 'price/base.html' %}
+{% block albums_active %}active{% endblock %}
+{% block body %}
+<li>Username: {{name}} </li>
+    <ul>
+    {% for i in display %}
+		<li>company name: {{ i.c_name }}</li>
+		<li>no of shares bought: {{ i.bought_shares }}</li>
+		<li>no of shares sold: {{ i.sold_shares }}</li>
+		<li>balance shares: {{ i.bal_shares }}</li>
+		<li>current market price: {{ i.current_market_price }}</li>
+		<li>current market evaluation: {{ i.market_evaluation }}</li>
+		<li>profit for this company: {{ i.profit }}</li>	
+    {% endfor %}
+    </ul>
+<li>Virtual Cash Left: {{vc}}</li>
+<li>Net_Profit: {{net_profit}}</li>
+
+{% endblock %}
