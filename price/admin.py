@@ -4,4 +4,4 @@ from .models import Transaction,UserInfo,Portfolio
 
 admin.site.register(Transaction)
 admin.site.register(UserInfo)
-#admin.site.register(Portfolio)
+admin.site.register(Portfolio)
