@@ -43,23 +43,27 @@ def portfolio(request):
 		for c in company:
 			pf=Portfolio.objects.get(user=request.user,c_name=c)
 			pf.bal_shares=pf.bought_shares-pf.sold_shares
-			url="https://www.google.com/finance?q=NSE%3A"+c
-			htmlfile = urllib.request.urlopen(url)
-			htmltext = htmlfile.read().decode('utf-8')
-			regex = '<span id="ref_'+str(dict[c])+'_l">(.+?)</span>'
-			pattern = re.compile(regex)
-			rate = re.findall(pattern,htmltext)
-			price=(float(rate[0]))
-			pf.current_market_price=price
-			pf.market_evaluation=price*pf.bal_shares
-			sp+=pf.market_evaluation
-			display.append(pf)
-			pf.save()
-			
-		net_profit=sp+user_info.virtual_cash-50000.0
-		vc=	user_info.virtual_cash
+			if pf.bal_shares:
+				url="https://www.google.com/finance?q=NSE%3A"+c
+				htmlfile = urllib.request.urlopen(url)
+				htmltext = htmlfile.read().decode('utf-8')
+				regex = '<span id="ref_'+str(dict[c])+'_l">(.+?)</span>'
+				pattern = re.compile(regex)
+				rate = re.findall(pattern,htmltext)
+				price=(float(rate[0]))
+				pf.current_market_price=price
+				pf.market_evaluation=price*pf.bal_shares
+				sp+=pf.market_evaluation
+				display.append(pf)
+				pf.save()
+		e=0
+		if sp==0:
+			e=1
+		sp=round(sp,2)
+		vc=round(user_info.virtual_cash,2)
+		net_profit=round(sp+vc-50000.00,2)
 		name=request.user.username
-		context={ "display":display , "net_profit":net_profit, "vc":vc , "name":name }
+		context={ "display":display , "net_profit":net_profit, "vc":vc , "name":name ,"e":e}
 		return render(request,'price/portfolio.html',context)
 
 		
@@ -89,7 +93,7 @@ def detail(request,company_symbol):
 		regex = '<span id="ref_'+str(dict[company_symbol])+'_l">(.+?)</span>'
 		pattern = re.compile(regex)
 		rate = re.findall(pattern,htmltext)
-		price=((float(rate[0]))*100)/100
+		price=float(rate[0])
 		context={ "price":price , "company_symbol":company_symbol }
 		return render(request,'price/detail.html',context)
 		
@@ -179,7 +183,7 @@ def buy(request,company_symbol,price):
 						
 						transact.user=user_info.user
 						user_info.virtual_cash-=price*purchase_quantity
-						transact.virtual_cash=user_info.virtual_cash
+						transact.virtual_cash=round(user_info.virtual_cash,2)
 						user_info.save()
 						transact.company_symbol=company_symbol
 						transact.purchase_rate = price
@@ -244,9 +248,9 @@ def sell(request,cs,price):
 						transact.sale_amount = price*sale_quantity
 						transact.balance_shares=q-sale_quantity
 						vc=user_info.virtual_cash
-						transact.virtual_cash=vc+price*sale_quantity
+						transact.virtual_cash=round(vc+price*sale_quantity,2)
 						user_info.virtual_cash=transact.virtual_cash
-						transact.profit=price*sale_quantity-pr*sale_quantity
+						transact.profit=round(price*sale_quantity-pr*sale_quantity,2)
 						pf.profit+=transact.profit
 						pf.save()
 						transact.save()

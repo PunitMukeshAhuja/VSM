@@ -26,3 +26,15 @@ ul.errorlist > li {
 .glyphicon-star.active {
     color: #FDB230;
 }
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+   
+    width: 30%;
+    border-radius: 5px;
+background-color:#ffffff
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

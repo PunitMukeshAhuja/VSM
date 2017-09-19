@@ -1,19 +1,38 @@
 {% extends 'price/base.html' %}
 {% block albums_active %}active{% endblock %}
 {% block body %}
-<li>Username: {{name}} </li>
-    <ul>
-    {% for i in display %}
-		<li>company name: {{ i.c_name }}</li>
-		<li>no of shares bought: {{ i.bought_shares }}</li>
-		<li>no of shares sold: {{ i.sold_shares }}</li>
-		<li>balance shares: {{ i.bal_shares }}</li>
-		<li>current market price: {{ i.current_market_price }}</li>
-		<li>current market evaluation: {{ i.market_evaluation }}</li>
-		<li>profit for this company: {{ i.profit }}</li>	
-    {% endfor %}
-    </ul>
+<h1>Username: {{name}} </h1>
+{% if e %}
+	<p>You haven't done any transactions</p>
+{% else %}
+	<div class="card container" style="width:100%">
+	<h2>Portfolio Summary:</h2>
+	 <table border="2">
+	  <tr>
+		<th>Company Name</th>
+		<th>No of shares bought</th> 
+		<th>No of shares sold</th>
+		<th>Balance Shares</th>
+		<th>Current Market Price</th>
+		<th>Current Market Valuation</th>
+		<th>Profit</th>
+	  </tr>
+	{% for i in display %}
+		<tr>
+			<td>{{ i.c_name }}</td>
+			<td>{{ i.bought_shares }}</td>
+			<td>{{ i.sold_shares }}</td>
+			<td>{{ i.bal_shares }}</td>
+			<td>{{ i.current_market_price }}</td>
+			<td>{{ i.market_evaluation }}</td>
+			<td>{{ i.profit }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	</div>
+{% endif %}
 <li>Virtual Cash Left: {{vc}}</li>
 <li>Net_Profit: {{net_profit}}</li>
 
 {% endblock %}
+
