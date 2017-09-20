@@ -28,30 +28,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand brand-image" href="#"><span class="logo">Make My Tour</span></a>
+            <a class="navbar-brand brand-image" href="#"><span class="logo">Virtual Stock Market</span></a>
         </div>
         <!--as above part is not under collapse it will remain as it is even after reducing screen size-->
 
         <!--link the below section under collapse with id to the above defined button-->
         <div class="collapse navbar-collapse options" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Our Tours <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">National</a></li>
-                        <li><a href="#">International</a></li>
-                        <li><a href="#">Conducted</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Customised</a></li>
-                    </ul>
-                </li>
+                <li class="{% block home_active %}{% endblock %}"><a href="{% url 'home:home' %}">Home</a></li>
+				<li class="{% block portfolio_active %}{% endblock %}"><a href="{% url 'price:portfolio' %}">PortFolio</a></li>
+				<li class="{% block stockprices_active %}{% endblock %}"><a href="{% url 'price:index' %}">Stock Prices</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="{% url 'price:register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="{% url 'price:login_user' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="{% url 'price:logout_user' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
 

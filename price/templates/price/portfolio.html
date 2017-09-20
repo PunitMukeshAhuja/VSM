@@ -1,11 +1,17 @@
 {% extends 'price/base.html' %}
 {% block albums_active %}active{% endblock %}
 {% block body %}
-<h1>Username: {{name}} </h1>
+<div class="panel panel-primary">
+      <div class="panel-heading">Username: {{name}} </div>
+      <div class="panel-body">
+    
 {% if e %}
 	<p>You haven't done any transactions</p>
 {% else %}
-	<div class="card container" style="width:100%">
+	
+	<!--<div class="panel panel-default">
+    <div class="panel-body">-->
+
 	<h2>Portfolio Summary:</h2>
 	 <table border="2">
 	  <tr>
@@ -29,10 +35,11 @@
 		</tr>
 	{% endfor %}
 	</table>
-	</div>
+	
 {% endif %}
 <li>Virtual Cash Left: {{vc}}</li>
 <li>Net_Profit: {{net_profit}}</li>
-
+</div>
+</div>
 {% endblock %}
 

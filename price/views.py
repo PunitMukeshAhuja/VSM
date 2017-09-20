@@ -174,7 +174,7 @@ def buy(request,company_symbol,price):
 					if user_info.virtual_cash<(price*purchase_quantity):
 						return render(request, 'price/buy.html', {'error_message': "You don't have enough virtual cash to buy the shares"})
 					elif purchase_quantity == 0:
-						return render(request, 'price/sell.html', {'error_message': "Please enter non zero purchase quantity"})				
+						return render(request, 'price/buy.html', {'error_message': "Please enter non zero purchase quantity"})				
 					else:
 						pf=Portfolio.objects.get(user=request.user,c_name=company_symbol)
 						pf.bought_shares+=purchase_quantity

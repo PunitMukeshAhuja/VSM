@@ -1,4 +1,4 @@
-{% extends 'price/base_visitor.html' %}
+{% extends 'price/base.html' %}
 {% block title %}Buy Shares{% endblock %}
 {% block buy_active %}active{% endblock %}
 
@@ -12,16 +12,26 @@
                     <h3>Buy Shares</h3>
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
-                    {% endif %}
+                    {% else %}
                     <form class="form-horizontal" role="form" action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% include 'price/form_template.html' %}
-                        <div class="form-group">
+                        
+						<!--<div class="form-group">
+                            <label class="control-label col-sm-2" for="id_quantity">
+                                Quantity:
+                            </label>
+                            <div class="col-sm-10">
+                                <input id="id_quantity" maxlength="30" name="quantity" type="number">
+                            </div>-->
+                        
+                        
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </div>
                     </form>
+					{% endif %}
                 </div>
             </div>
         </div>
