@@ -40,10 +40,16 @@ def portfolio(request):
 		dict["WIPRO"]=9055815
 		user_info = UserInfo.objects.get(user=request.user)
 		sp=0
+		pt=0
 		for c in company:
 			pf=Portfolio.objects.get(user=request.user,c_name=c)
+			
 			pf.bal_shares=pf.bought_shares-pf.sold_shares
-			if pf.bal_shares:
+			if pf.bal_shares :
+				user_info = Transaction.objects.get(user=request.user,company_symbol=c,balance_shares=pf.bal_shares)
+				prate=user_info.purchase_rate
+				cp=prate*pf.bal_shares
+				
 				url="https://www.google.com/finance?q=NSE%3A"+c
 				htmlfile = urllib.request.urlopen(url)
 				htmltext = htmlfile.read().decode('utf-8')
@@ -53,6 +59,9 @@ def portfolio(request):
 				price=(float(rate[0]))
 				pf.current_market_price=price
 				pf.market_evaluation=price*pf.bal_shares
+				pf.profit_on_transact=user_info.profit
+				pf.profit_on_current=pf.market_evaluation-cp
+				pt=pt+pf.profit_on_current
 				sp+=pf.market_evaluation
 				display.append(pf)
 				pf.save()
@@ -61,7 +70,9 @@ def portfolio(request):
 			e=1
 		sp=round(sp,2)
 		vc=round(user_info.virtual_cash,2)
-		net_profit=round(sp+vc-50000.00,2)
+		
+		
+		net_profit=round(pt,2)
 		name=request.user.username
 		context={ "display":display , "net_profit":net_profit, "vc":vc , "name":name ,"e":e}
 		return render(request,'price/portfolio.html',context)
@@ -187,7 +198,7 @@ def buy(request,company_symbol,price):
 						user_info.save()
 						transact.company_symbol=company_symbol
 						transact.purchase_rate = price
-						transact.balance_shares=purchase_quantity
+						transact.balance_shares+=purchase_quantity
 					
 						#transact.purchase_quantity = quantity
 						transact.purchase_amount = price*purchase_quantity
@@ -236,7 +247,7 @@ def sell(request,cs,price):
 						price=float(price)
 						user_info = UserInfo.objects.get(user=request.user)
 						transact.purchase_rate=purchase_amount/q
-						transact.purchase_rate=(math.ceil(transact.purchase_rate*100)/100)
+						transact.purchase_rate=round(transact.purchase_rate,2)
 						pr=purchase_amount/q
 						transact.purchase_amount=(transact.purchase_rate)*q
 						
@@ -251,7 +262,7 @@ def sell(request,cs,price):
 						transact.virtual_cash=round(vc+price*sale_quantity,2)
 						user_info.virtual_cash=transact.virtual_cash
 						transact.profit=round(price*sale_quantity-pr*sale_quantity,2)
-						pf.profit+=transact.profit
+						pf.profit_on_transact+=transact.profit
 						pf.save()
 						transact.save()
 						user_info.save()

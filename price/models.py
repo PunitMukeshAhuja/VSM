@@ -38,6 +38,8 @@ class Portfolio(models.Model):
 	current_market_price=models.FloatField(default=0.0)
 	market_evaluation=models.FloatField(default=0.0)
 	profit=models.FloatField(default=0.0)
+	profit_on_transact=models.FloatField(default=0.0)
+	profit_on_current=models.FloatField(default=0.0)
 	
 	def __str__(self):
 		return str(self.user) + ' - ' + str(self.profit)

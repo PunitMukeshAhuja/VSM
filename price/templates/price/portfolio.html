@@ -21,7 +21,8 @@
 		<th>Balance Shares</th>
 		<th>Current Market Price</th>
 		<th>Current Market Valuation</th>
-		<th>Profit</th>
+		<th>Profit On Transaction</th>
+		<th>Profit As Per Market Price</th>
 	  </tr>
 	{% for i in display %}
 		<tr>
@@ -31,14 +32,15 @@
 			<td>{{ i.bal_shares }}</td>
 			<td>{{ i.current_market_price }}</td>
 			<td>{{ i.market_evaluation }}</td>
-			<td>{{ i.profit }}</td>
+			<td>{{ i.profit_on_transact }}</td>
+			<td>{{ i.profit_on_current }}</td>
 		</tr>
 	{% endfor %}
 	</table>
 	
 {% endif %}
 <li>Virtual Cash Left: {{vc}}</li>
-<li>Net_Profit: {{net_profit}}</li>
+<li>Profit as per market price: {{net_profit}}</li>
 </div>
 </div>
 {% endblock %}
