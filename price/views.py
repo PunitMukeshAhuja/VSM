@@ -6,6 +6,7 @@ from django.contrib.auth import logout
 from .forms import UserForm,BuyForm,SellForm
 from .models import Transaction,UserInfo,Portfolio
 import math
+import json
 
 app_name='price'
 
@@ -30,36 +31,28 @@ def portfolio(request):
 		return render(request, 'price/login.html')
 	else:
 		display=[]
-		company = ["GOOG","AAPL","RELIANCE","ICICIBANK","HCLTECH","WIPRO"]
-		dict={}
-		dict["GOOG"]=304466804484872
-		dict["AAPL"]=22144
-		dict["RELIANCE"]=4674509
-		dict["ICICIBANK"]=16345036
-		dict["HCLTECH"]=10627180
-		dict["WIPRO"]=9055815
+		company = ["WPRO","NEST","SBIN","ICICIBC","RIL","LT"]
+		
 		user_info = UserInfo.objects.get(user=request.user)
 		sp=0
 		pt=0
+		#p=0
 		for c in company:
 			pf=Portfolio.objects.get(user=request.user,c_name=c)
 			
 			pf.bal_shares=pf.bought_shares-pf.sold_shares
-			if pf.bal_shares :
+			if pf.bal_shares:
 				user_info = Transaction.objects.get(user=request.user,company_symbol=c,balance_shares=pf.bal_shares)
 				prate=user_info.purchase_rate
 				cp=prate*pf.bal_shares
 				
-				url="https://www.google.com/finance?q=NSE%3A"+c
-				htmlfile = urllib.request.urlopen(url)
-				htmltext = htmlfile.read().decode('utf-8')
-				regex = '<span id="ref_'+str(dict[c])+'_l">(.+?)</span>'
-				pattern = re.compile(regex)
-				rate = re.findall(pattern,htmltext)
-				price=(float(rate[0]))
+				htmltext1 = urllib.request.urlopen("https://www.bloomberg.com/markets/api/bulk-time-series/price/"+c+":IN?timeFrame=1_DAY");	
+				data = json.load(htmltext1)
+				price = float(data[0]['lastPrice'])
 				pf.current_market_price=price
 				pf.market_evaluation=price*pf.bal_shares
 				pf.profit_on_transact=user_info.profit
+				#p+=pf.profit_on_transact
 				pf.profit_on_current=pf.market_evaluation-cp
 				pt=pt+pf.profit_on_current
 				sp+=pf.market_evaluation
@@ -84,30 +77,38 @@ def portfolio(request):
 	
 	
 def index(request):
-	company = ["GOOG","AAPL","RELIANCE","ICICIBANK","HCLTECH","WIPRO"]
+	company = ["WPRO","NEST","SBIN","ICICIBC","RIL","LT"]
 	context = {
 					"company": company,
 				}
 	return render(request, 'price/index.html', context)
 	
 def detail(request,company_symbol):
-		dict={}
-		dict["GOOG"]=304466804484872
-		dict["AAPL"]=22144
-		dict["RELIANCE"]=4674509
-		dict["ICICIBANK"]=16345036
-		dict["HCLTECH"]=10627180
-		dict["WIPRO"]=9055815
-		url="https://www.google.com/finance?q=NSE%3A"+company_symbol
-		htmlfile = urllib.request.urlopen(url)
-		htmltext = htmlfile.read().decode('utf-8')
-		regex = '<span id="ref_'+str(dict[company_symbol])+'_l">(.+?)</span>'
-		pattern = re.compile(regex)
-		rate = re.findall(pattern,htmltext)
-		price=float(rate[0])
-		context={ "price":price , "company_symbol":company_symbol }
-		return render(request,'price/detail.html',context)
-		
+		if not request.user.is_authenticated():
+			return render(request, 'price/login.html')
+		else:
+			htmltext1 = urllib.request.urlopen("https://www.bloomberg.com/markets/api/bulk-time-series/price/"+company_symbol+":IN?timeFrame=1_DAY");	
+			data = json.load(htmltext1)
+
+			mylist=[]
+			t=len(data[0]['price'])
+
+			for i in range(0,t):
+				mylist.append(data[0]['price'][i]['value'])
+
+			price = float(data[0]['lastPrice'])
+			mylist.append(price)
+			t=t+1
+			diff=round(price-data[0]['price'][t-2]['value'],2)
+			if diff >=0:
+				progress=1
+			else:
+				progress=0
+			name=request.user.username
+			context={ "price":price , "company_symbol":company_symbol , "mylist":mylist , "t":t,"progress":progress,"diff":diff,"name":name
+			}
+			return render(request,'price/detail.html',context)
+			
 def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
@@ -125,10 +126,10 @@ def login_user(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
-				company=["GOOG","AAPL","RELIANCE","ICICIBANK","HCLTECH","WIPRO"]
-				context = { "company": company,
+				visit=0
+				context = { "visit":visit
 				}
-				return render(request, 'price/index.html', context)
+				return render(request, 'price/home.html', context)
 			else:
 				return render(request, 'price/login.html', {'error_message': 'Your account has been disabled'})
 		else:   
@@ -149,7 +150,7 @@ def register(request):
 		new_user.virtual_cash=50000.0
 		#user.save()
 		new_user.save()
-		company=["GOOG","AAPL","RELIANCE","ICICIBANK","HCLTECH","WIPRO"]
+		company = ["WPRO","NEST","SBIN","ICICIBC","RIL","LT"]
 		for c in company:
 			pf=Portfolio()
 			pf.user=user
@@ -159,8 +160,7 @@ def register(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
-				company=["GOOG", "AAPL", "RELIANCE", "ICICIBANK", "HCLTECH", "WIPRO"]
-				return render(request, 'price/index.html', {'company':company})
+				return render(request, 'price/home.html', {'company':company})
                 
 	context = {
         "form": form,

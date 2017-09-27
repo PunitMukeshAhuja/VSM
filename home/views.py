@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
 def home(request):
-	return render(request, 'home/home.html')
+	visit=0
+	context={"visit":visit}
+	return render(request, 'home/home.html',context)
 
 

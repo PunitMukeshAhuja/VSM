@@ -5,20 +5,18 @@
     <title>{% block title %}Vsm{% endblock %}</title>
     {% load staticfiles %}
     <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
-	<title>Travel Trial</title>
-    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'styl.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    
 
-    <!--bootstrap CDN-->
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'home/styl.css' %}"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	</head>
-    <body>
-	<!--navigation bar-->
+    <script src="{% static 'music/js/main.js' %}"></script>
+</head>
+<body style="background-color:#eee">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
 
@@ -35,22 +33,32 @@
         <!--link the below section under collapse with id to the above defined button-->
         <div class="collapse navbar-collapse options" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="{% block home_active %}{% endblock %}"><a href="{% url 'home:home' %}">Home</a></li>
-				<li class="{% block portfolio_active %}{% endblock %}"><a href="{% url 'price:portfolio' %}">PortFolio</a></li>
-				<li class="{% block stockprices_active %}{% endblock %}"><a href="{% url 'price:index' %}">Stock Prices</a></li>
+                <li class="active"><a href="{% url 'home:home'%}">Home</a></li>
+				
+                <!--<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">HELLO {{name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">National</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Conducted</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Customised</a></li>
+                    </ul>
+                </li>-->
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'price:register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="{% url 'price:login_user' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li><a href="{% url 'price:logout_user' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a href="{% url 'price:register'%}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="{% url 'price:login_user'%}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
 
 
     </div>
 </nav>
+
+
 
 
 {% block body %}

@@ -1,6 +1,7 @@
 {% extends 'home/base.html' %}
 {% block albums_active %}active{% endblock %}
 {% block body %}
+{% load staticfiles %}
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -13,17 +14,14 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
 
-            <img src="sc1.jpg" alt="cpg" class="img-responsive" style="width:1400px;height:500px;">
-            <div class="carousel-caption">
-                <h3>Welcome to Make My Tour Travels:)</h3>
-
-        </div>
+            <img src="{%  static 'welcome.jpg' %}" alt="cpg" class="img-responsive" style="width:1400px;height:500px;">
+            
             </div>
         <div class="item">
-            <img src="cpg.jpg" alt="lol" class="img-responsive" style="width:1400px;height:500px;">
-            <div class="carousel-caption">
+            <img src="{%  static 'building.jpe' %}" alt="lol" class="img-responsive" style="width:1400px;height:500px;">
+            <!--<div class="carousel-caption">
                 <h3>New Offers are awaiting!!</h3>
-            </div>
+            </div>-->
         </div>
 
     </div>
@@ -54,37 +52,38 @@
 
 
 <div class="space"></div>
-<p class="trend">Trending Places:</p>
+<p class="trend">Online Courses:</p>
 <div class="container lined-images">
     <div class="row">
         <div class="col-md-4 sn-4">
             <div class="col-md-8">
-                <img src="eiffel-tower.jpg" alt="eiffel-tower" class="img-responsive center-block">
+                <img src="{%  static 'cema.jpg' %}" alt="eiffel-tower" class="img-responsive center-block">
                 </div>
             <div class="col-md-4">
-                <h5 class="title">Eiffel-Tower:</h5>
-                <p class="small">Everyone who visits Paris for the first time probably has the same punchlist of...</p>
-                <p class="al_right"><a href="#">More..</a></p>
+                <h5 class="title">CEMA:</h5>
+                <p class="small">The main aim of the programme is to develop domain knowledge
+expertise in...</p>
+                <p class="al_right"><a href="https://www.ncfm-india.com/ORE/ORECEMARegistrationNew.jsp">More..</a></p>
             </div>
         </div>
         <div class="col-md-4 sn-4">
             <div class="col-md-8">
-                <img src="bali.jpg" alt="bali" class="img-responsive center-block">
+                <img src="{%  static 'crta.jpg' %}" alt="bali" class="img-responsive center-block">
             </div>
             <div class="col-md-4">
-                <h5 class="title">Bali:</h5>
-                <p class="small">The Indonesian island of Bali is a favourite destination for both adventurers...</p>
-                <p class="al_right"><a href="#">More..</a></p>
+                <h5 class="title">CRTA:</h5>
+                <p class="small">You will get to learn share market basics,market research,mathematical modelling...</p>
+                <p class="al_right"><a href="https://www.elearnmarkets.com/nse">More..</a></p>
             </div>
         </div>
         <div class="col-md-4 sn-4">
             <div class="col-md-8">
-                <img src="london.jpg" alt="london" class="img-responsive center-block">
+                <img src="{%  static 'ncfm.png' %}" alt="london" class="img-responsive center-block">
             </div>
             <div class="col-md-4 ">
-                <h5 class="title">London:</h5>
-                <p class="small">There's so much to see and do in London, it's easy to be overwhelmed. Major... </p>
-                <p class="al_right"><a href="#">More..</a></p>
+                <h5 class="title">NCFM:</h5>
+                <p class="small">NCFM is a nationally recognized certification which is mandatory for </p>
+                <p class="al_right"><a href="https://www.nseindia.com/education/content/module_ncfm.htm">More..</a></p>
 
             </div>
         </div>
@@ -92,64 +91,13 @@
 </div>
 
 <div class="space"></div>
-<div class="container head">
-<div class="row">
-    <div class="col-md-12">
-        <h3>East Or West - India Is The Best !!!!</h3>
-    </div>
-    </div>
-    </div>
-<div class="space"></div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 sn-3 ma">
-            <div class="thumbnail">
-                <img src="swami lilashah.jpg" alt="swami_lilashah" class="img-responsive center-block" padding-top:20px>
-                <div class="caption">
-                    <h3>Swami Lilashah Samadhi Mandir</h3>
-                    <p>Jai Ramji Ki !!!</p>
-                    <button type="button" class="btn btn-default">Learn More</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 sn-3">
-            <div class="thumbnail">
-                <img src="golden_temple.jpg" alt="golden_temple" class="img-responsive center-block">
-                <div class="caption">
-                    <h3>GoldenTemple</h3>
-                    <p>Satnam Waheguruji !!!!</p>
-                    <button type="button" class="btn btn-default">Learn More</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 sn-3">
-            <div class="thumbnail">
-                <img src="vaishnodevi.jpg" alt="vaishnodevi" class="img-responsive center-block">
-                <div class="caption">
-                    <h3>Vaishnodevi Mandir</h3>
-                    <p>Jai Mata Di !!!</p>
-                    <button type="button" class="btn btn-default">Learn More</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 sn-3 bala">
-            <div class="thumbnail">
-                <img src="balaji.jpg" alt="balaji" class="img-responsive center-block">
-                <div class="caption">
-                    <h3>Tirupati Balaji</h3>
-                    <p>Jai Shri Krishna !!!</p>
-                    <button type="button" class="btn btn-default">Learn More</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <div class="space"></div>
 <div class="container head">
     <div class="row">
         <div class="col-md-12">
-            <h3>Travel Experiences :)</h3>
+            <h3>Stock Talk:</h3>
         </div>
     </div>
 </div>
@@ -172,7 +120,89 @@
         </div>
     </div>
 </div>
-
+<div class="space"></div>
+<div class="container head">
+<div class="row">
+    <div class="col-md-12">
+        <h3>Explore some companies !!!!</h3>
+    </div>
+    </div>
+    </div>
+<div class="space"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 sn-4 ma">
+            <div class="thumbnail">
+                <img src="{%  static 'wipro.jpe' %}" alt="swami_lilashah" class="img-responsive center-block" padding-top:20px>
+                <div class="caption">
+                    <h3>WIPRO</h3>
+                    <!--<p>Jai Ramji Ki !!!</p>-->
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'WPRO'%}">Learn More</a></button>
+                </div>
+            </div>
+        </div>
+		<div class="col-md-4 sn-4 ma">
+            <div class="thumbnail">
+                <img src="{%  static 'nestle.png' %}" alt="swami_lilashah" class="img-responsive center-block" >
+                <div class="caption">
+                    <h3>NESTLE</h3>
+                    <!--<p>Jai Ramji Ki !!!</p>-->
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'NEST'%}">Learn More</a></button>
+                </div>
+            </div>
+        </div>
+		
+        
+        <div class="col-md-4 sn-4">
+            <div class="thumbnail">
+                <img src="{%  static 'sbi.png' %}" alt="vaishnodevi" class="img-responsive center-block">
+                <div class="caption">
+                    <h3>SBI Bank</h3>
+                    <!--<p>Jai Mata Di !!!</p>-->
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'SBIN'%}">Learn More</a></button>
+                </div>
+            </div>
+        </div>
+		</div>
+		</div>
+		<div class="container">
+		<div class="row">
+        <div class="col-md-4 sn-4 bala">
+            <div class="thumbnail">
+                <img src="{%  static 'lt.png' %}" alt="balaji" class="img-responsive center-block" padding-top:20px>
+                <div class="caption">
+                    <h3>L&T</h3>
+                    <!--<p>Jai Shri Krishna !!!</p>-->
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'LT'%}">Learn More</a></button>
+                </div>
+            </div>
+        </div>
+		<div class="col-md-4 sn-4">
+            <div class="thumbnail">
+                <img src="{%  static 'icici.png' %}" alt="golden_temple" class="img-responsive center-block">
+                <div class="caption">
+                    <h3>ICICI Bank</h3>
+                    <!--<p>Satnam Waheguruji !!!!</p>-->
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'ICICIBC'%}">Learn More</a></button>
+                </div>
+            </div>
+        </div>
+        
+        
+		<div class="col-md-4 sn-4 ma">
+            <div class="thumbnail">
+                <img src="{%  static 'reliance.png' %}" alt="swami_lilashah" class="img-responsive center-block">
+                <div class="caption">
+                    <h3>RELIANCE</h3>
+                    <!--<p>Jai Ramji Ki !!!</p>-->
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'RIL'%}">Learn More</a></button>
+                </div>
+            </div>
+			</div>
+        </div>
+    </div>
+	</div>
+</div>
 <div class="space"></div>
 <div class="container head">
     <div class="row">

@@ -3,9 +3,64 @@
 {% block albums_active %}active{% endblock %}
 
 {% block body %}
-<h1>{{company_symbol}} {{price}}</h1>
+	{% if progress %}
+		<h1>{{company_symbol}}  {{price}}(INR) <span class="glyphicon glyphicon-arrow-up" style="color:green"></span> <font style="color:green">{{diff}}</font></h1>
+	{% else %}
+		<h1>{{company_symbol}} {{price}} (INR) <span class="glyphicon glyphicon-arrow-down" style="color:red"></span> <font style="color:red"> {{diff}}</font></h1>
+	{% endif %}
 <ul>
 	<li><a href="{% url 'price:buy' company_symbol=company_symbol price=price%}">Buy</a></li>
 	<li><a href="{% url 'price:sell' cs=company_symbol price=price%}">Sell</a></li>
 </ul>
+<canvas id="myChart" height="400" width="800"></canvas> 
+
+<script>
+
+var ctx = document.getElementById("myChart").getContext('2d');
+var time = []
+var x=30
+var y=13
+
+var t={{t}}
+for(i=0;i<t;i++){
+	
+	time.push(y.toString()+":"+x.toString());
+
+	if (x==60){
+		y=y+1;
+		x=0;
+	}
+	x=x+5;	
+}
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: time,
+        datasets: [{
+            label: "Stock value",
+            data: {{mylist}},
+            backgroundColor: [
+                
+                'rgba(255, 159, 124, 0.8)'
+            ],
+            
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        scales: {
+
+
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
+
+</script>
+
 {% endblock %}

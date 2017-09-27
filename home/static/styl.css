@@ -1,3 +1,7 @@
+body {
+    background: white url("background.png");
+}
+
 .brand-image{
 background:url(logo.jpg) no-repeat;
 background-size: 80px 50px;
@@ -102,11 +106,11 @@ text-align:right;
 background:#ffffff;
 padding-bottom:20px;
 }
-.head{
+/*.head{
 font-color:#7FFF00;
 text-align:center;
 background:#ffffff;
-}
+}*/
 .caption{
 text-align:center;
 font-size:15px;
