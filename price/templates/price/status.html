@@ -3,7 +3,9 @@
 {% block albums_active %}active{% endblock %}
 
 {% block body %}
-<h1>Status:</h1>
+<div class="panel panel-primary">
+      <div class="panel-heading">Transaction Details: </div>
+	  <div class="panel-body">
 <ul>
 	<li>Name: {{transact.user.username}}</li>
 	<li>Virtual Cash: {{transact.virtual_cash}}</li>
@@ -18,4 +20,6 @@
 	<li>Profit: {{transact.profit}}</li> 
 	
 </ul>
+</div>
+</div>
 {% endblock %}

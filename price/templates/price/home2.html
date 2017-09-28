@@ -1,4 +1,4 @@
-{% extends 'price/base_visitor.html' %}
+{% extends 'price/base.html' %}
 {% block albums_active %}active{% endblock %}
 {% block body %}
 {% load staticfiles %}
@@ -94,13 +94,7 @@ expertise in...</p>
 
 
 <div class="space"></div>
-<div class="container head">
-    <div class="row">
-        <div class="col-md-12">
-            <h3>Stock Talk:</h3>
-        </div>
-    </div>
-</div>
+<p class="trend">Stock Talk:</p>
 
 <div class="container lined-images">
     <div class="row">
@@ -108,7 +102,7 @@ expertise in...</p>
             <h4 align="center">Stock market for beginners:</h4>
             <!--embedding video using bootstrap-->
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" width="460" height="200" src="https://www.youtube.com/embed/0asQOYockjY" alt="stock" frameborder="0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" width="460" height="200" src="https://www.youtube.com/embed/0asQOYockjY" alt="begin" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 		<div class="col-md-6 bottom">
@@ -121,13 +115,9 @@ expertise in...</p>
     </div>
 </div>
 <div class="space"></div>
-<div class="container head">
-    <div class="row">
-        <div class="col-md-12 why">
-            <p class="trend">How To Play Our Game ???                      <button type="button" class="btn btn-warning" align="right"><a href="{% url 'price:about'%}">Find out...</a></button> </p>
-        </div>
-    </div>
-</div>
+
+            <p class="trend">How To Play Our Game ???                   <button type="button" class="btn btn-warning" align="right"><a href="{% url 'price:about'%}">Find out...</a></button> </p>
+        
 <div class="container head">
 <div class="row">
     <div class="col-md-12">
@@ -144,7 +134,7 @@ expertise in...</p>
                 <div class="caption">
                     <h3>WIPRO</h3>
                     <!--<p>Jai Ramji Ki !!!</p>-->
-                    <button type="button" class="btn btn-info"><a href="{% url 'price:detail' 'WPRO'%}">Learn More</a></button>
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'WPRO'%}">Learn More</a></button>
                 </div>
             </div>
         </div>
@@ -154,7 +144,7 @@ expertise in...</p>
                 <div class="caption">
                     <h3>NESTLE</h3>
                     <!--<p>Jai Ramji Ki !!!</p>-->
-                    <button type="button" class="btn btn-info"><a href="{% url 'price:detail' 'NEST'%}">Learn More</a></button>
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'NEST'%}">Learn More</a></button>
                 </div>
             </div>
         </div>
@@ -166,7 +156,7 @@ expertise in...</p>
                 <div class="caption">
                     <h3>SBI Bank</h3>
                     <!--<p>Jai Mata Di !!!</p>-->
-                    <button type="button" class="btn btn-info"><a href="{% url 'price:detail' 'SBIN'%}">Learn More</a></button>
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'SBIN'%}">Learn More</a></button>
                 </div>
             </div>
         </div>
@@ -180,7 +170,7 @@ expertise in...</p>
                 <div class="caption">
                     <h3>L&T</h3>
                     <!--<p>Jai Shri Krishna !!!</p>-->
-                    <button type="button" class="btn btn-info"><a href="{% url 'price:detail' 'LT'%}">Learn More</a></button>
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'LT'%}">Learn More</a></button>
                 </div>
             </div>
         </div>
@@ -190,7 +180,7 @@ expertise in...</p>
                 <div class="caption">
                     <h3>ICICI Bank</h3>
                     <!--<p>Satnam Waheguruji !!!!</p>-->
-                    <button type="button" class="btn btn-info"><a href="{% url 'price:detail' 'ICICIBC'%}">Learn More</a></button>
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'ICICIBC'%}">Learn More</a></button>
                 </div>
             </div>
         </div>
@@ -202,7 +192,7 @@ expertise in...</p>
                 <div class="caption">
                     <h3>RELIANCE</h3>
                     <!--<p>Jai Ramji Ki !!!</p>-->
-                    <button type="button" class="btn btn-info"><a href="{% url 'price:detail' 'RIL'%}">Learn More</a></button>
+                    <button type="button" class="btn btn-default"><a href="{% url 'price:detail' 'RIL'%}">Learn More</a></button>
                 </div>
             </div>
 			</div>

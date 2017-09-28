@@ -25,7 +25,13 @@ app_name='price'
 					
 					
 		return render(request,'price/portfolio.html',{'transact':transact})'''
-		
+def contact(request):
+	return render(request,'price/contact.html')
+	
+def about(request):
+	return render(request,'price/about.html')
+
+	
 def portfolio(request):
 	if not request.user.is_authenticated():
 		return render(request, 'price/login.html')
@@ -36,12 +42,14 @@ def portfolio(request):
 		user_info = UserInfo.objects.get(user=request.user)
 		sp=0
 		pt=0
-		#p=0
+		bs=0
+		p=0
 		for c in company:
 			pf=Portfolio.objects.get(user=request.user,c_name=c)
 			
 			pf.bal_shares=pf.bought_shares-pf.sold_shares
-			if pf.bal_shares:
+			if pf.bal_shares or pf.bought_shares:
+				bs+=pf.bought_shares
 				user_info = Transaction.objects.get(user=request.user,company_symbol=c,balance_shares=pf.bal_shares)
 				prate=user_info.purchase_rate
 				cp=prate*pf.bal_shares
@@ -52,14 +60,14 @@ def portfolio(request):
 				pf.current_market_price=price
 				pf.market_evaluation=price*pf.bal_shares
 				pf.profit_on_transact=user_info.profit
-				#p+=pf.profit_on_transact
+				p+=pf.profit_on_transact
 				pf.profit_on_current=pf.market_evaluation-cp
 				pt=pt+pf.profit_on_current
 				sp+=pf.market_evaluation
 				display.append(pf)
 				pf.save()
 		e=0
-		if sp==0:
+		if sp==0 and bs==0:
 			e=1
 		sp=round(sp,2)
 		vc=round(user_info.virtual_cash,2)
@@ -67,7 +75,7 @@ def portfolio(request):
 		
 		net_profit=round(pt,2)
 		name=request.user.username
-		context={ "display":display , "net_profit":net_profit, "vc":vc , "name":name ,"e":e}
+		context={ "display":display , "net_profit":net_profit, "vc":vc , "name":name ,"e":e,"p":p}
 		return render(request,'price/portfolio.html',context)
 
 		
@@ -115,7 +123,7 @@ def logout_user(request):
     context = {
         "form": form,
     }
-    return render(request, 'price/login.html', context)
+    return render(request, 'price/home3.html', context)
 
 
 def login_user(request):
@@ -129,7 +137,7 @@ def login_user(request):
 				visit=0
 				context = { "visit":visit
 				}
-				return render(request, 'price/home.html', context)
+				return render(request, 'price/home2.html', context)
 			else:
 				return render(request, 'price/login.html', {'error_message': 'Your account has been disabled'})
 		else:   
@@ -160,7 +168,7 @@ def register(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
-				return render(request, 'price/home.html', {'company':company})
+				return render(request, 'price/home2.html', {'company':company})
                 
 	context = {
         "form": form,

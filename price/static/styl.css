@@ -1,23 +1,4 @@
-.take {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-   
-    width: 30%;
-    border-radius: 5px;
-background-color:#ffffff
-}
 
-.take:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.img {
-    border-radius: 5px 5px 0 0;
-}
-
-.floating-box{
-display:inline-block;
-
-}
 
 .brand-image{
 background:url(logo.jpg) no-repeat;
@@ -104,6 +85,12 @@ padding-top:5px;
 font-family:Segoe,"Segoe UI","DejaVu Sans","Trebuchet MS",Verdana,sans-serif;
 font-style:italic;
 font-size:30px;
+font-weight:bold;
+}
+.cr{
+font-family:Segoe,"Segoe UI","DejaVu Sans","Trebuchet MS",Verdana,sans-serif;
+font-style:italic;
+font-size:20px;
 font-weight:bold;
 }
 .small{

@@ -18,19 +18,20 @@
 
 var ctx = document.getElementById("myChart").getContext('2d');
 var time = []
-var x=30
-var y=13
+var x=15
+var y=9
 
 var t={{t}}
 for(i=0;i<t;i++){
 	
 	time.push(y.toString()+":"+x.toString());
 
-	if (x==60){
+	if (x==55){
 		y=y+1;
 		x=0;
 	}
-	x=x+5;	
+	else
+		x=x+5;	
 }
 var myChart = new Chart(ctx, {
     type: 'line',

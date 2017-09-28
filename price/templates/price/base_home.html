@@ -34,21 +34,16 @@
         <div class="collapse navbar-collapse options" id="myNavbar">
             <ul class="nav navbar-nav">
 			
-			<li class="dropdown">
 			
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#">HELLO {{request.user.username}} <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'price:logout_user'%}">Logout</a></li>
-                        
-                    </ul>
-                </li>
-				<li><a href="{% url 'price:portfolio'%}">Portfolio</a></li>
+				
 				<li><a href="{% url 'home:home'%}">Home</a></li>
 			
 					
                     
                 <li><a href="{% url 'price:about'%}">About</a></li>
                 <li><a href="{% url 'price:contact'%}">Contact</a></li>
+				<li><a href="{% url 'price:register'%}"><span class="glyphicon glyphicon-user"> SignUp</span></a></li>
+				<li><a href="{% url 'price:login_user'%}"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
             </ul>
             
         </div>
@@ -62,7 +57,6 @@
 
 {% block body %}
 {% endblock %}
-
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
 <div class="navbar-header">

@@ -17,7 +17,7 @@
     <script src="{% static 'music/js/main.js' %}"></script>
 </head>
 <body style="background-color:#eee">
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse ">
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -40,8 +40,8 @@
 			
 					
                     
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'price:about'%}">About</a></li>
+                <li><a href="{% url 'price:contact'%}">Contact</a></li>
             </ul>
             
         </div>
@@ -55,5 +55,15 @@
 
 {% block body %}
 {% endblock %}
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+<div class="navbar-header">
+            
+            
+            <a class="navbar-brand cr" href="#"><span class="cr">&#169 copyrights reserved</span></a>
+        </div>
+
+</div>
+</nav>
 </body>
 </html>

@@ -1,0 +1,53 @@
+{% extends 'price/base_visitor.html' %}
+{% block albums_active %}active{% endblock %}
+{% block body %}
+{% load staticfiles %}
+<br>
+<div class="panel panel-primary">
+      <div class="panel-heading">We are eager to serve you!!! </div>
+      <div class="panel-body">
+	  <p>We have developed this website.Please send us your suggestions on the email links provided.If you any finance related queries then please send us.</p> 
+
+	  </div>
+	  </div>
+
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 sn-4 ma">
+            <div class="thumbnail">
+                <img src="{%  static 'gitprofile.jpg' %}" alt="swami_lilashah" class="img-responsive center-block" padding-top:20px>
+                <div class="caption">
+                    <h3>Punit Mukesh Ahuja</h3>
+                    <p>Student at Sardar Patel Institute Of Technology.I am a full stack developer.</p>
+                    <p>email: punitmukeshahuja03@gmail.com</p>
+                </div>
+            </div>
+        </div>
+		<div class="col-md-4 sn-4 ma">
+            <div class="thumbnail">
+                <img src="{%  static 'photo.jpg' %}" alt="swami_lilashah" class="img-responsive center-block" >
+                <div class="caption">
+                    <h3>Shubham Dubey</h3>
+                    <p>Student at Sardar Patel Institute Of Technology.I am interested in data analysis,networking,etc.</p>
+					<p>email: shubhamshd99@gmail.com</p>
+                    
+                </div>
+            </div>
+        </div>
+		<div class="col-md-4 sn-4 ma">
+            <div class="thumbnail">
+                <img src="{%  static 'sushmen.jpg' %}" alt="swami_lilashah" class="img-responsive center-block" >
+                <div class="caption">
+                    <h3>Sushmen Chaudhari</h3>
+                    <p>Student at Sardar Patel Institute Of Technology.I am a web developer,college technical fest Matrix VCP.</p>
+					<p>email: sushmenkc179@gmail.com</p>
+                    
+                </div>
+            </div>
+        </div>
+		</div>
+		</div>
+
+{% endblock %}
