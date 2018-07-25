@@ -12,6 +12,7 @@
 	<li><a href="{% url 'price:buy' company_symbol=company_symbol price=price%}">Buy</a></li>
 	<li><a href="{% url 'price:sell' cs=company_symbol price=price%}">Sell</a></li>
 </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <canvas id="myChart" height="400" width="800"></canvas> 
 
 <script>
